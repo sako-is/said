@@ -6,12 +6,13 @@
         <meta name="keywords" content="personal website sako">
 
         <script src="//unpkg.com/alpinejs" defer></script>
+        <link rel="stylesheet" href="style.css">
     </head>
     <body>
         <div class="container">
-            <div class="title">Welcome!</div>
-            <div id="greeting" x-data="{ greetings: 0 }">
-                <button x-text="{greetings}">Greetings!</button>
+            <div id="title" class="inner">Welcome!</div>
+            <div id="greeting" class="inner" x-data="{ greetings: 0 }">
+                <button class="button bouncy" x-text="{greetings}">Greetings!</button>
             </div>
         </div>
     </body>
