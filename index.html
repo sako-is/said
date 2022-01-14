@@ -5,15 +5,28 @@
         <meta name="description" content="personal website">
         <meta name="keywords" content="personal website sako">
 
-        <script src="//unpkg.com/alpinejs" defer></script>
+        <script src="https://unpkg.com/alpinejs" defer></script>
         <link rel="stylesheet" href="style.css">
     </head>
     <body>
         <div class="container">
             <div id="title" class="inner">Welcome!</div>
-            <div id="greeting" class="inner" x-data="{ greetings: 0 }">
-                <button class="button bouncy" x-text="{greetings}">Greetings!</button>
+            <div id="greeting" class="inner" x-data="{ greeting: 0 }">
+                <button class="button bouncy" x-on:click="greeting+=1" x-text="greeting + ' Greetings!'"></button>
             </div>
         </div>
+
+        <!-- <script>
+            function greet() {
+                Alpine.store(greeting);
+                localStorage.setItem('greeting', JSON.stringify(greeting));
+            }
+
+            document.addEventListener('alpine:init', () => {
+                const greetingNumber = localStorage.getItem('greeting');
+                greeting = JSON.parse(greetingNumber) || [];
+                Alpine.store('greeting', greeting);
+            })
+        </script> -->
     </body>
 </html>
