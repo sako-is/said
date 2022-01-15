@@ -8,8 +8,9 @@
         <link rel="icon" type="image/svg+xml" href="favicon.svg" />
         <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     
- 
+        <script defer src="https://unpkg.com/@alpinejs/persist@3.x.x/dist/cdn.min.js"></script> 
         <script src="https://unpkg.com/alpinejs" defer></script>
+
         <link rel="stylesheet" href="style.css">
     </head>
     <body>
@@ -17,22 +18,29 @@
 
         <!-- main content -->
         <main>
-          <div class="container">
-              <div id="title" class="inner">Welcome!</div>
-              <div id="greeting" class="inner" x-data="{grtng: 0, greeting: localStorage.getItem('grtng')}" x-init="$watch('greeting', (val) => localStorage.setItem('grtng', val))">
-                  <button id="greeting" class="button bouncy" @click="grtng += 1" x-text="grtng + 'Greetings!'"></button>
-              </div>
-              <div class="inner" x-data="{ isShowing: false }">
-                  <button class="button bouncy" @click="isShowing = !isShowing">Show contents</button>
+            <div class="container">
+                <div id="title" class="inner">Welcome!</div>
+                <div x-data="{ count: $persist(0) }">
+                    <button x-on:click="count++" x-text="count + ' Greetings'"></button>
+                </div>
+                
+                <div class="inner" x-data="{ isShowing: false }">
+                    <button class="button bouncy" @click="isShowing = !isShowing">Show contents</button>
   
-                  <div id="navbar" class="inner" x-show="isShowing">Show</div>
-              </div>
+                    <div id="navbar" class="inner" x-show="isShowing">
+                        <a href="pages/conlangs/ertenen.html">Ertenén</a>
+                    </div>
+                </div>
   
-          </div>
+            </div>
         </main>
 
         <!-- javascript >:( -->
         <script>
+            import Alpine from 'alpinejs'
+            import persist from '@alpinejs/persist'
+             
+            Alpine.plugin(persist)
         </script>
         <script type="module" src="/main.js"></script>
  
