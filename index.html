@@ -4,29 +4,35 @@
         <title>sako</title>
         <meta name="description" content="personal website">
         <meta name="keywords" content="personal website sako">
-
+        <meta charset="UTF-8" />
+        <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    
+ 
         <script src="https://unpkg.com/alpinejs" defer></script>
         <link rel="stylesheet" href="style.css">
     </head>
     <body>
+        <canvas id="bg"></canvas>
         <div class="container">
             <div id="title" class="inner">Welcome!</div>
-            <div id="greeting" class="inner" x-data="{ greeting: 0 }">
-                <button class="button bouncy" x-on:click="greeting+=1" x-text="greeting + ' Greetings!'"></button>
+            <div id="greeting" class="inner" x-data="{ $store.greeting: 0 }">
+                <button class="button bouncy" @click="$store.greeting+=1" x-text="$store.greeting + ' Greetings!'"></button>
             </div>
+            <div class="inner" x-data="{ isShowing: false }">
+                <button class="button bouncy" @click="isShowing = !isShowing">Show contents</button>
+ 
+                <div id="navbar" class="inner" x-show="isShowing">Show</div>
+            </div>
+ 
         </div>
-
-        <!-- <script>
-            function greet() {
-                Alpine.store(greeting);
-                localStorage.setItem('greeting', JSON.stringify(greeting));
-            }
-
+ 
+        <script>
             document.addEventListener('alpine:init', () => {
-                const greetingNumber = localStorage.getItem('greeting');
-                greeting = JSON.parse(greetingNumber) || [];
-                Alpine.store('greeting', greeting);
+                Alpine.store('greetings', greeting)
             })
-        </script> -->
+        </script>
+        <script type="module" src="/main.js"></script>
+ 
     </body>
 </html>
