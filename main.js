@@ -11,16 +11,16 @@ const renderer = new THREE.WebGL1Renderer({canvas: document.querySelector('#bg')
 
 renderer.setPixelRatio(window.pixelRatio);
 renderer.setSize(window.innerWidth, window.innerHeight);
-camera.position.setZ(30);
+camera.position.setZ(1);
 
 renderer.render(camera, scene);
 
 const geometry = new THREE.TorusGeometry(10, 3, 16, 100);
-const material = new THREE.MeshStandardMaterial({color: 0x002417, wireframe: true});
+const material = new THREE.MeshStandardMaterial({color: 0xf37112, wireframe: true});
 const torus = new THREE.Mesh(geometry, material);
 
 const starGeometry = new THREE.SphereGeometry(9, 24, 24);
-const starMaterial = new THREE.MeshStandardMaterial({color: 0xf37112, wireframe: true});
+const starMaterial = new THREE.MeshStandardMaterial({color: 0xffffff, wireframe: false});
 const bigStar = new THREE.Mesh(starGeometry, starMaterial);
 
 const pointLight = new THREE.PointLight(0xffffff);
