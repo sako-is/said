@@ -19,8 +19,8 @@
         <main>
           <div class="container">
               <div id="title" class="inner">Welcome!</div>
-              <div id="greeting" class="inner" x-data="{ greeting: 0 }">
-                  <button class="button bouncy" @click="greeting+=1" x-text="greeting + ' Greetings!'"></button>
+              <div id="greeting" class="inner" x-data="{grtng: 0, greeting: localStorage.getItem('grtng')}" x-init="$watch('greeting', (val) => localStorage.setItem('grtng', val))">
+                  <button id="greeting" class="button bouncy" @click="grtng += 1" x-text="grtng + 'Greetings!'"></button>
               </div>
               <div class="inner" x-data="{ isShowing: false }">
                   <button class="button bouncy" @click="isShowing = !isShowing">Show contents</button>
@@ -32,6 +32,8 @@
         </main>
 
         <!-- javascript >:( -->
+        <script>
+        </script>
         <script type="module" src="/main.js"></script>
  
     </body>
