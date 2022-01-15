@@ -16,8 +16,12 @@ camera.position.setZ(30);
 renderer.render(camera, scene);
 
 const geometry = new THREE.TorusGeometry(10, 3, 16, 100);
-const material = new THREE.MeshStandardMaterial({color: 0xf37112, wireframe: true});
+const material = new THREE.MeshStandardMaterial({color: 0x002417, wireframe: true});
 const torus = new THREE.Mesh(geometry, material);
+
+const starGeometry = new THREE.SphereGeometry(9, 24, 24);
+const starMaterial = new THREE.MeshStandardMaterial({color: 0xf37112, wireframe: true});
+const bigStar = new THREE.Mesh(starGeometry, starMaterial);
 
 const pointLight = new THREE.PointLight(0xffffff);
 pointLight.position.set(5, 5, 5);
@@ -25,6 +29,7 @@ pointLight.position.set(5, 5, 5);
 const ambientLight = new THREE.AmbientLight(0xffffff);
 scene.add(pointLight, ambientLight);
 
+scene.add(bigStar);
 scene.add(torus);
 
 
@@ -49,12 +54,9 @@ const controls = new OrbitControls(camera, renderer.domElement);
 function animate() {
   requestAnimationFrame(animate);
   torus.rotation.x += 0.01;
-  torus.rotation.y += 0.005;
   torus.rotation.z += 0.01;
 
-  torus.scale.x += 0.001;
-  torus.scale.y += 0.0005;
-  torus.scale.z += 0.001;
+  
 
   controls.update();
   renderer.render(scene, camera);
